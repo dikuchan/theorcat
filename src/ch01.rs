@@ -1,4 +1,12 @@
+/*
+ * 1. Identity function
+ */
+
 fn id<T>(x: T) -> T { x }
+
+/*
+ * 2. Composition function
+ */ 
 
 fn comp<'a, A, B, C, F, G>(f: F, g: G) -> impl Fn(A) -> C + 'a
     where F: Fn(A) -> B + 'a,
@@ -6,6 +14,10 @@ fn comp<'a, A, B, C, F, G>(f: F, g: G) -> impl Fn(A) -> C + 'a
 {
     move |x| g(f(x))
 }
+
+/*
+ * 3. Tests for composition function
+ */
 
 #[test]
 fn test_comp_id() {

@@ -7,6 +7,10 @@ use std::{
 };
 use rand::Rng;
 
+/*
+ * 1. Higher-order function memoize implementation
+ */
+
 struct Cacher<A, B, F>
     where F: Fn(A) -> B
 {
@@ -70,6 +74,10 @@ fn test_memoize() {
     assert!(measure_time(f, 2) < 1f32);
 }
 
+/*
+ * 2. Random number generator memoization
+ */
+
 #[test]
 fn test_memoize_rand() {
     let f = |_| -> f64 { rand::random::<f64>() };
@@ -77,6 +85,10 @@ fn test_memoize_rand() {
 
     assert_eq!(f(()), f(()));
 }
+
+/*
+ * 3. Random number generator with seed fails memoization
+ */
 
 #[test]
 fn test_memoize_rand_with_seed() {

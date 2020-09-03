@@ -1,6 +1,7 @@
 /*
-    0. Kleisli category for the writer monad
+ * 0. Kleisli category for the writer monad
  */
+#![allow(dead_code)]
 
 type Writer<A> = (A, String);
 
@@ -18,7 +19,7 @@ fn comp_writer<A, B, C, F, G>(m1: F, m2: G) -> impl Fn(A) -> Writer<C>
 fn id_writer<A>(x: A) -> Writer<A> { (x, String::new()) }
 
 /*
-    1. Kleisli category for partial functions
+ * 1. Kleisli category for partial functions
  */
 
 fn comp_partial<A, B, C, F, G>(m1: F, m2: G) -> impl Fn(A) -> Option<C>
@@ -42,7 +43,7 @@ fn safe_root(x: f64) -> Option<f64> {
 }
 
 /*
-    2. Safe reciprocal implementation
+ * 2. Safe reciprocal implementation
  */
 
 fn safe_reciprocal(x: f64) -> Option<f64> {
@@ -50,7 +51,7 @@ fn safe_reciprocal(x: f64) -> Option<f64> {
 }
 
 /*
-    3. Safe root reciprocal implementation
+ * 3. Safe root reciprocal implementation
  */
 
 fn safe_root_reciprocal(x: f64) -> Option<f64> {
